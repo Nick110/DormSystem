@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 	<hibernate-mapping package="dorm.system.entity">
+ 		<class name="Student" table="student" dynamic-update="true">
+ 			<id name="id"></id>
+ 			<property name="password"></property>
+ 			<property name="realName"></property>
+ 			<property name="grade"></property>
+ 			<property name="gender"></property>
+ 	 	    <many-to-one name="dormId" unique="true"/> 
+ 			<many-to-one name="majorId" unique="true"/>
+ 			<set name="leaveregist" cascade="all">
+ 				<key column="stu"></key>
+ 				<one-to-many class="Leaveregist"/>
+ 			</set>	
+ 			<set name="equipment" cascade="all">
+ 				<key column="stuId"></key>
+ 				<one-to-many class="Equipment"/>
+ 			</set>	
+ 			<set name="maintenance" cascade="all">
+ 				<key column="stuId"></key>
+ 				<one-to-many class="Maintenance"/>
+ 			</set>   		
+ 		</class>
+ 	</hibernate-mapping>

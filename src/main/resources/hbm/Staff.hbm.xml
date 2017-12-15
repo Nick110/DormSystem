@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 	<hibernate-mapping package="dorm.system.entity">
+ 		<class name="Staff" table="staff" dynamic-update="true">
+ 			<id name="id"></id>
+ 			<property name="realName"></property>
+ 			<property name="password"></property>
+ 			<property name="tel"></property>
+ 			<one-to-one name="buildId" property-ref="staff"/>
+ 			 <set name="notice">
+ 				<key column="staffId"></key>
+ 				<one-to-many class="Notice"/>
+ 			</set>
+ 		</class>
+ 	</hibernate-mapping>
+ 	

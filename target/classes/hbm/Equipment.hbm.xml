@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 	<hibernate-mapping package="dorm.system.entity">
+ 		<class name="Equipment" table="equipment" dynamic-update="true">
+ 			<id name="id">
+ 				<generator class="native"></generator>
+ 			</id>
+ 			<property name="thingsName"></property>
+ 			<property name="borrowTime"></property>
+ 			<property name="returnTime"></property>		
+ 			<many-to-one name="stuId" unique="true"/> 
+ 		</class>
+ 	</hibernate-mapping>
+ 	

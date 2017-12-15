@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 	<hibernate-mapping package="dorm.system.entity">
+ 		<class name="Visitrecord" table="visitrecord" dynamic-update="true">
+ 			<id name="id">
+ 				<generator class="native"></generator>
+ 			</id>
+ 			<property name="personName"></property>
+ 			<property name="visitTime"></property>
+ 			<property name="leaveTime"></property>
+ 			<property name="idCardNo"></property>			
+ 			<many-to-one name="buildId" unique="true"/> 
+ 		</class>
+ 	</hibernate-mapping>
+ 	

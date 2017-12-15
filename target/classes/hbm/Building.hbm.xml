@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+ 	<hibernate-mapping package="dorm.system.entity">
+ 		<class name="Building" table="building" dynamic-update="true">
+ 			<id name="id"></id>
+ 			<property name="aptName"></property>
+ 			<property name="buildingNo"></property>
+ 		    <many-to-one name="staff" unique="true"/>
+   			<set name="dormitory" cascade="all">
+ 				<key column="buildId"></key>
+ 				<one-to-many class="Dormitory"/>
+ 			</set>
+ 			<set name="visitrecord" cascade="all">
+ 				<key column="buildId"></key>
+ 				<one-to-many class="Visitrecord"/>
+ 			</set>	  
+ 		</class>
+ 	</hibernate-mapping> 	
