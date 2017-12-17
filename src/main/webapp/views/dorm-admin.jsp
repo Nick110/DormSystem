@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
@@ -22,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="left-menu">
             <div class="logo-div">
                 <p class="logo-p">
-                    <img class="logo-img" src="../images/logo.png" alt="宿舍管理">
+                    <img class="logo-img" src="../images/staff-logo.png" alt="宿舍管理">
                     <span>宿舍管理</span>
                 </p>
             </div>
@@ -66,18 +67,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="tab-panel active" id="announcements">
                     <div class="check-div">
                         <span>发布公告</span>
-                        <a href="" style="color:rgb(0, 179, 89);margin-left:100px;">已发布公告</a>
                     </div>
                     <div class="announcements-body">
-                        <form action="" class="form-horizontal">
-                            <input type="text" class="no-border-input" placeholder="公告标题">
+                        <form action="/staffHome/doAddNotice" class="form-horizontal" method="post">
+                            <p>发布公告</p>
                             <hr>
-                            <textarea class="form-control" rows="7" placeholder="公告内容"></textarea>
+                            <input type="hidden" name="staffId" value="${staffDto.id}">
+                            <textarea name="context" class="form-control" rows="7" placeholder="公告内容"></textarea>
                             <div class="col-xs-offset-3 col-xs-5">
                                 <button type="reset" class="btn btn-xs btn-white" style="margin-left: 20px;">取 消</button>
                                 <button type="submit" class="btn btn-xs btn-green">保存</button>
                             </div>
                         </form>
+                    </div>
+                    <div class="notice-history">
+                        <p>已发布公告</p>
+                        <table class="table table-striped notice-table">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>公告内容</td>
+                                    <td>发布时间</td>
+                                </tr>
+                            </thead>
+                            <c:forEach var="noticeHistory" items="${noticeDtoHistory}">
+                                <tbody>
+                                    <tr>
+                                        <td><c:out value="${noticeHistory.id}"></c:out></td>
+                                        <td><c:out value="${noticeHistory.context}"></c:out></td>
+                                        <td><c:out value="${noticeHistory.time}"></c:out></td>
+                                    </tr>
+                                </tbody>
+                            </c:forEach>
+                        </table>
                     </div>
                 </div>
 
@@ -605,7 +627,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- /.modal -->
 </body>
 <script src="../js/jquery-3.2.1.js"></script>
-<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 <script src="../js/dorm-admin.js"></script>
 
 </html>

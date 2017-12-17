@@ -48,7 +48,49 @@
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
 	<script src="js/jquery.min.js"></script>
-	<script src="js/log.js"></script>
+	<!-- 判断用户类型 -->
+	<script type="text/javascript">
+		function getUserType(){
+			var form=$("#form1");
+			var type=$("input[name='type']:checked").val();
+			var id=$("#username").val().trim();
+			var pwd=$("#password").val().trim();
+			//alert("id"+id+"pwd"+pwd);
+			if(id!=""&&pwd!=""){
+				//alert("111"+id);
+				if(type=="student"){
+					form.action="/stu/login";
+					form.method="post";
+			        $("#form1").attr("action",form.action);
+			        $("#form1").attr("method",form.method);
+			        form.submit();
+				}else if(type=="admin"){
+					//alert("进入");
+					form.action="/admin/login";
+					form.method="post";
+					$("#form1").attr("action",form.action);
+					$("#form1").attr("method",form.method);
+					form.submit();
+				}else if(type=="staff"){
+					form.action="/staff/login";
+					form.method="post";
+					$("#form1").attr("action",form.action);
+					$("#form1").attr("method",form.method);
+					form.submit();
+				}
+			}else if(id==""||pwd==""){
+				$("#logintip").text("用户名或密码不能为空");
+				//alert($("#logintip").html());
+			}
+			
+		}
+		$(document).ready(function(){
+			$(".form-control").click(function(){
+				//alert($("#logintip").text());
+				$("#logintip").text("");
+		})});
+	
+	</script>	
 	</head>
 	<body class="style-2">
 		<div class="container">
@@ -62,18 +104,18 @@
 					
 
 					<!-- Start Sign In Form -->
-					<form action="" method="post" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form1">
+					<form action="#" method="post" class="fh5co-form animate-box" data-animate-effect="fadeInLeft" id="form1">
 						<h2>Sign In</h2>
 						<div id="logintip" style="font-size: 12px;color:#33cccc;height: 18px" >
 							<%
 								String log = (String)request.getAttribute("state");
-								if (log != null && log.equals("failed")) {
-									out.print("用户名或密码错误，请重新登录.");
+								if (log != null && log.equals("failed")&&!log.equals("")) {
+									out.print("用户名或密码错误，请重新登录");
 								}
-							%>							
+							%>						
 						</div>
-						<div class="form-group">
-							<label for="username" class="sr-only">Username</label>
+						<div class="form-group" id="userid">
+							<label for="username" class="sr-only" onclick="clear()">Username</label>
 							<input type="text" name="id" class="form-control" id="username" placeholder="Username" autocomplete="off">
 						</div>
 						<div class="form-group">
@@ -89,7 +131,7 @@
 							<label for="type"><input type="radio"  name="type" value="staff" style="margin-left: 10px;"> Staff</label>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="Sign In" class="btn btn-primary" onclick="getUserType()">
+							<input type="button" value="Sign In" class="btn btn-primary" onclick="getUserType()">
 						</div>
 					</form>
 					<!-- END Sign In Form -->
@@ -112,27 +154,7 @@
 	<!-- Main JS -->
 	<script src="js/main.js"></script>
 
-	<!-- 判断用户类型 -->
-	<script type="text/javascript">
-		function getUserType(){
-			var form=$("#form1");
-			var type=$("input[name='type']:checked").val();
-			var id=$("").val();
-			var pwd=$("").val();
-			if(type=="student"){
-				form.action="/stu/login";
-		        $("#form1").attr("action",form.action);
-			}else if(type=="admin"){
-				form.action="/admin/login";
-				alert(form.action);
-				$("#form1").attr("action",form.action);
-			}else if(type=="staff"){
-				form.action="/staff/login";
-				alert(form.action);
-				$("#form1").attr("action",form.action);
-			}
-		}
-	</script>
+
 	</body>
 </html>
 

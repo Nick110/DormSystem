@@ -33,7 +33,7 @@ public class HomeController {
 	 * 进入登录页面
 	 * @return
 	 */
-	@RequestMapping(value="/admin/login",method=RequestMethod.GET)
+	@RequestMapping(value="/user/login",method=RequestMethod.GET)
 	public String getLogin(){
 		logger.info("进入");
 		return "login";
@@ -48,7 +48,7 @@ public class HomeController {
 		logger.info("管理员"+admin.getId()+"密码"+admin.getPassword());
 		AdministratorDto a=administratorService.login(admin);
 		if(a!=null) {
-			httpSession.setAttribute("name",a.getRealName());	
+			httpSession.setAttribute("name",a.getRealName());
 			return "adminHome";
 		}else {
 			request.setAttribute("state", "failed");
@@ -66,7 +66,7 @@ public class HomeController {
 		logger.info("学生"+stu.getId()+"密码"+stu.getPassword());
 		StudentDto s=studentService.login(stu);
 		if(s!=null) {
-			httpSession.setAttribute("name", s.getRealName());	
+			httpSession.setAttribute("name", s.getRealName());
 			return "userHome";
 		}else {
 			request.setAttribute("state", "failed");
@@ -86,8 +86,8 @@ public class HomeController {
 		logger.info("员工"+staff.getId()+"密码"+staff.getPassword());
 		StaffDto s=staffService.login(staff);
 		if(s!=null) {
-			httpSession.setAttribute("name", s.getRealName());	
-			return "userHome";
+			httpSession.setAttribute("staff", s);
+			return "redirect:/staffHome";
 		}else {
 			request.setAttribute("state", "failed");
 			return "login";
