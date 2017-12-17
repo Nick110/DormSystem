@@ -22,11 +22,11 @@ public class NoticeController {
     @Autowired
     private NoticeService noticeService;
 
-//    HttpSession httpSession;
-//    StaffDto staffDto = (StaffDto) httpSession.getAttribute("staff");
+    @Autowired
+    HttpSession httpSession;
 
     @RequestMapping("/staffHome")
-    public ModelAndView staffHome(HttpSession httpSession) {
+    public ModelAndView staffHome() {
         StaffDto staffDto = (StaffDto) httpSession.getAttribute("staff");
         ModelAndView mav = new ModelAndView("dorm-admin");
         String staffDtoId = staffDto.getId();
@@ -41,10 +41,10 @@ public class NoticeController {
     }
 
     @PostMapping("staffHome/doAddNotice")
-    public ModelAndView addNotice(NoticeDto noticeDto, HttpSession httpSession) {
+    public ModelAndView addNotice(NoticeDto noticeDto) {
         StaffDto staffDto = (StaffDto) httpSession.getAttribute("staff");
         logger.info(staffDto.getRealName());
         noticeService.addNotice(noticeDto);
-        return new ModelAndView("redirect:/dorm-admin");
+        return new ModelAndView("redirect:/staffHome");
     }
 }

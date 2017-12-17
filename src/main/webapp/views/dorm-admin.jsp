@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
 
             <div class="person-info">
-                <p id="userName">杨少侠</p>
+                <p id="userName"><c:out value="${staffDto.realName}"></c:out></p>
                 <p>
                     <a href="#">退出登录</a>
                 </p>
