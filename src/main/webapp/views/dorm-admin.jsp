@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <a href="#">退出登录</a>
                 </p>
             </div>
-            <div class="menu-item menu-item-active" href="#announcements">
+            <div class="menu-item" href="#announcements">
                 <img src="../images/公告.png" alt="发布公告">发布公告
             </div>
             <div class="menu-item" href="#repair">
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="tab-content">
 
                 <!-- 发布公告模块 -->
-                <div class="tab-panel active" id="announcements">
+                <div class="tab-panel" id="announcements">
                     <div class="check-div">
                         <span>发布公告</span>
                     </div>
@@ -90,15 +90,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>发布时间</td>
                                 </tr>
                             </thead>
-                            <c:forEach var="noticeHistory" items="${noticeDtoHistory}">
-                                <tbody>
+                            <tbody>
+                                <c:forEach var="noticeHistory" items="${noticeDtoHistory}" varStatus="i">
                                     <tr>
-                                        <td><c:out value="${noticeHistory.id}"></c:out></td>
+                                        <td><c:out value="${i.count}"></c:out></td>
                                         <td><c:out value="${noticeHistory.context}"></c:out></td>
                                         <td><c:out value="${noticeHistory.time}"></c:out></td>
                                     </tr>
-                                </tbody>
-                            </c:forEach>
+                                </c:forEach>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>报修人</th>
+                                    <th>报修人学号</th>
                                     <th>报修寝室号</th>
                                     <th>报修内容</th>
                                     <th>报修时间</th>
@@ -121,53 +121,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                            <c:forEach var="maintenanceHistory" items="${maintenanceDtoHistory}" varStatus="i">
                                 <tr>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>厕所的灯坏了</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td style="cursor: pointer;color:#529373">已修复</td>
+                                    <td><c:out value="${i.count}"></c:out></td>
+                                    <td class="maintenance-id" hidden="hidden"name="${maintenanceHistory.id}"></td>
+                                    <td><c:out value="${maintenanceHistory.stuId}"></c:out></td>
+                                    <td><c:out value="${maintenanceHistory.dormName}"></c:out></td>
+                                    <td><c:out value="${maintenanceHistory.description}"></c:out></td>
+                                    <td><c:out value="${maintenanceHistory.time}"></c:out></td>
+                                    <td class="state"><c:out value="${maintenanceHistory.state}"></c:out></td>
+                                    <td class="do-repair" style="cursor: pointer;color:#529373">已修复</td>
                                 </tr>
-                                <tr>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>厕所的灯坏了</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td style="cursor: pointer;color:#529373">已修复</td>
-                                </tr>
-                                <tr>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>厕所的灯坏了</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td style="cursor: pointer;color:#529373">已修复</td>
-                                </tr>
-                                <tr>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>厕所的灯坏了</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td style="cursor: pointer;color:#529373">已修复</td>
-                                </tr>
-                                <tr>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td>厕所的灯坏了</td>
-                                    <td>xxx</td>
-                                    <td>xxx</td>
-                                    <td style="cursor: pointer;color:#529373">已修复</td>
-                                </tr>
+                            </c:forEach>
                             </tbody>
+                                <%--<tr>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>厕所的灯坏了</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td style="cursor: pointer;color:#529373">已修复</td>
+                                </tr>
+                                <tr>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>厕所的灯坏了</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td style="cursor: pointer;color:#529373">已修复</td>
+                                </tr>
+                                <tr>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>厕所的灯坏了</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td style="cursor: pointer;color:#529373">已修复</td>
+                                </tr>
+                                <tr>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td>厕所的灯坏了</td>
+                                    <td>xxx</td>
+                                    <td>xxx</td>
+                                    <td style="cursor: pointer;color:#529373">已修复</td>
+                                </tr>
+                            </tbody>--%>
                         </table>
                     </div>
                 </div>
@@ -627,7 +630,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- /.modal -->
 </body>
 <script src="../js/jquery-3.2.1.js"></script>
+<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/dorm-admin.js"></script>
+<script src="../js/dorm-staff.js"></script>
 
 </html>

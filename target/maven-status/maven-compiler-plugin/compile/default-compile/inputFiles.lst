@@ -15,6 +15,7 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\dao\NoticeDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Maintenance.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\HygienegradesDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\NoticeServiceImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\controller\MaintenanceController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\AdministratorServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Visitrecord.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\BaseDao.java
@@ -31,6 +32,7 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\service\NoticeService.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dto\Json.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\VisitrecordDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\DormitoryServiceImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\controller\StaffController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\MaintenanceDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\MaintenanceServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Hygienegrades.java
@@ -54,6 +56,7 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\service\AdministratorService.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dto\SessionInfo.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\EquipmentDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dto\AdministratorDto.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\dto\MaintenanceDto.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\MaintenanceService.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\MaintenanceDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Dormitory.java

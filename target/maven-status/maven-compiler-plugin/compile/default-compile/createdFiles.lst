@@ -23,6 +23,7 @@ dorm\system\dao\HygienegradesDao.class
 dorm\system\service\MajorService.class
 dorm\system\dto\NoticeDto.class
 dorm\system\entity\Staff.class
+dorm\system\controller\StaffController.class
 dorm\system\dao\AdministratorDao.class
 dorm\system\dao\impl\StaffDaoImpl.class
 dorm\system\dao\StudentDao.class
@@ -40,6 +41,7 @@ dorm\system\service\MaintenanceService.class
 dorm\system\dao\impl\LeaveregistDaoImpl.class
 dorm\system\service\BuildingService.class
 dorm\system\dao\BuildingDao.class
+dorm\system\dto\MaintenanceDto.class
 dorm\system\dto\SessionInfo.class
 dorm\system\entity\Maintenance.class
 dorm\system\entity\Administrator.class
@@ -65,6 +67,7 @@ dorm\system\service\impl\NoticeServiceImpl.class
 dorm\system\service\impl\AdministratorServiceImpl.class
 dorm\system\dao\EquipmentDao.class
 dorm\system\service\VisitrecordService.class
+dorm\system\controller\MaintenanceController.class
 dorm\system\service\EquipmentService.class
 dorm\system\dto\StudentDto.class
 dorm\system\dao\impl\MaintenanceDaoImpl.class

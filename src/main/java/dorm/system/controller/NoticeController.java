@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping
 public class NoticeController {
     Logger logger = LoggerFactory.getLogger(NoticeController.class);
     @Autowired
@@ -24,21 +23,6 @@ public class NoticeController {
 
     @Autowired
     HttpSession httpSession;
-
-    @RequestMapping("/staffHome")
-    public ModelAndView staffHome() {
-        StaffDto staffDto = (StaffDto) httpSession.getAttribute("staff");
-        ModelAndView mav = new ModelAndView("dorm-admin");
-        String staffDtoId = staffDto.getId();
-        logger.info(staffDtoId);
-//        StaffDto staffDto = noticeService.selectStaff(staffDtoId);
-//        logger.info(staffDto.getRealName());
-        List<NoticeDto> noticeDtoHistory = noticeService.showNotice(staffDto);
-        logger.info(Integer.toString(noticeDtoHistory.size()));
-        mav.addObject("staffDto", staffDto);
-        mav.addObject("noticeDtoHistory", noticeDtoHistory);
-        return mav;
-    }
 
     @PostMapping("staffHome/doAddNotice")
     public ModelAndView addNotice(NoticeDto noticeDto) {

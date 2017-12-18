@@ -34,8 +34,8 @@ public class NoticeServiceImpl implements NoticeService {
     public void addNotice(NoticeDto noticeDto) {
         Date date = new Date();
         Notice notice = new Notice();
-        //将noticeDto的值赋给notice
         Staff staff = staffDao.get(Staff.class, noticeDto.getStaffId());
+        //将noticeDto的值赋给notice
         BeanUtils.copyProperties(noticeDto, notice);
         notice.setStaffId(staff);
         notice.setTime(new Timestamp(date.getTime()));

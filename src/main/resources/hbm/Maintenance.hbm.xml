@@ -8,11 +8,12 @@
  				<generator class="native"></generator>
  			</id>
  			<property name="time"></property>
- 			<property name="decribtion"></property>
+ 			<property name="description"></property>
  			<property name="state"></property>
  			<property name="position"></property>
- 			<many-to-one name="dormId"/> 
- 			<many-to-one name="stuId"/> 
+ 			<many-to-one name="dormId"/>
+ 			<many-to-one name="stuId"/>
+ 			<many-to-one name="staffId"/>
  		</class>
  	</hibernate-mapping>
  	

@@ -6,8 +6,9 @@ public class Maintenance {
 	private int id;
 	private Timestamp time;
 	private Student stuId;
-	private String decribtion;
+	private String description;
 	private Dormitory dormId;
+	private Staff staffId;
 	private String state;
 	private String position;
 	public int getId() {
@@ -26,13 +27,16 @@ public class Maintenance {
 	public void setStuId(Student stuId) {
 		this.stuId = stuId;
 	}
-	public String getDecribtion() {
-		return decribtion;
-	}
-	public void setDecribtion(String decribtion) {
-		this.decribtion = decribtion;
-	}
-	public String getState() {
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getState() {
 		return state;
 	}
 	public void setState(String state) {
@@ -55,5 +59,12 @@ public class Maintenance {
 	public void setPosition(String position) {
 		this.position = position;
 	}
+    public Staff getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(Staff staffId) {
+        this.staffId = staffId;
+    }
 
 }
