@@ -1,19 +1,13 @@
 $(document).ready(function(){
-    var href = $.cookie('href');
-    // if (href == undefined){
-    //     $('.tab-panel').addClass('active').siblings('.tab-panel').removeClass('active');
-    //     $('.menu-item').eq(0).addClass('menu-item-active');
-    //     $('.menu-item').eq(0).addClass('menu-item-active');
-    //     $('.menu-item').eq(0).siblings().removeClass('menu-item-active');
-    //     $('.menu-item').eq(0).siblings('ul').children('.menu-item-content').removeClass('menu-item-active');
-    //     $('.menu-item').eq(0).parent().siblings('.menu-item').removeClass('menu-item-active');
-    //     $('.menu-item').eq(0).parent().siblings('ul').children('.menu-item-content').removeClass('menu-item-active');
-    // }
+    var prevItem = $.cookie('href');
+    if (typeof(prevItem) == 'undefined'){
+        prevItem = '#announcements';
+    }
 
-
-    $(href).addClass('active').siblings('.tab-panel').removeClass('active');
+    console.log(prevItem);
+    $(prevItem).addClass('active').siblings('.tab-panel').removeClass('active');
     $('.menu-item').each(function () {
-        if ($(this).attr('href') == href) {
+        if ($(this).attr('href') == prevItem) {
             $(this).addClass('menu-item-active');
             $(this).siblings().removeClass('menu-item-active');
             $(this).siblings('ul').children('.menu-item-content').removeClass('menu-item-active');
@@ -23,7 +17,7 @@ $(document).ready(function(){
     })
 
     $('.menu-item-content').each(function () {
-        if ($(this).attr('href') == href) {
+        if ($(this).attr('href') == prevItem) {
             $(this).parent('.menu-ul').slideDown(1000);
             $(this).addClass('menu-item-active');
         }
@@ -66,6 +60,7 @@ $(document).ready(function(){
             data: 'maintenanceId='+maintenanceId,
             success: function (data) {
                 alert("已将该项标为已修复。");
+                window.location.reload();
             }
         })
         }
@@ -75,6 +70,11 @@ $(document).ready(function(){
         if ($(this).text() == '未修复') {
             $(this).css('color', '#ff540e');
         }
+    })
+
+    //提交添加奖惩表单
+    $('.add-awards-btn').click(function () {
+        $('.add-awards-form').submit();
     })
 
 })

@@ -18,6 +18,10 @@
  				<key column="dormId"></key>
  				<one-to-many class="Maintenance"/>
  			</set>
+			<!--<set name="rewards" cascade="all">
+ 				<key column="dormId"></key>
+ 				<one-to-many class="Rewards"/>
+ 			</set>-->
 			<set name="hygienegrades" cascade="all">
  				<key column="dormId"></key>
  				<one-to-many class="Hygienegrades"/>

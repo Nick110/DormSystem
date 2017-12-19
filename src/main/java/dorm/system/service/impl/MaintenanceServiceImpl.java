@@ -51,7 +51,7 @@ public class MaintenanceServiceImpl implements MaintenanceService {
            md.setDormName(maintenance.getDormId().getRoomNo());
            md.setStaffId(maintenance.getStaffId().getId());
            md.setStuId(maintenance.getStuId().getId());
-            maintenanceDtoList.add(md);
+           maintenanceDtoList.add(md);
         }
         return maintenanceDtoList;
     }

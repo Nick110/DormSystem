@@ -2,10 +2,11 @@ package dorm.system.controller;
 
 import dorm.system.dto.MaintenanceDto;
 import dorm.system.dto.NoticeDto;
+import dorm.system.dto.RewardsDto;
 import dorm.system.dto.StaffDto;
-import dorm.system.entity.Maintenance;
 import dorm.system.service.MaintenanceService;
 import dorm.system.service.NoticeService;
+import dorm.system.service.RewardsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,9 @@ public class StaffController {
     @Autowired
     private NoticeService noticeService;
     @Autowired
-    MaintenanceService maintenanceService;
+    private MaintenanceService maintenanceService;
+    @Autowired
+    private RewardsService rewardsService;
 
     @Autowired
     HttpSession httpSession;
@@ -43,8 +46,19 @@ public class StaffController {
 
         //显示报修表
         List<MaintenanceDto> maintenanceDtoList = maintenanceService.showMaintenance(staffDto);
-        logger.info(String.valueOf(maintenanceDtoList.get(1).getDormId()));
+//        logger.info(String.valueOf(maintenanceDtoList.get(1).getDormId()));
         mav.addObject("maintenanceDtoHistory", maintenanceDtoList);
+
+
+        //显示奖惩表
+        List<RewardsDto> rewardsDtoList = rewardsService.showRewards(staffDto);
+        System.out.println(rewardsDtoList.size());
+        mav.addObject("rewardsList", rewardsDtoList);
+
+
+
+
+
         return mav;
     }
 }

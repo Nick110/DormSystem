@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/dorm-admin.css">
+    <link rel="stylesheet" href="../css/dorm-staff.css">
     <title>宿舍管理</title>
 </head>
 
@@ -312,11 +312,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                 <!-- 奖惩状况模块 -->
                 <div class="tab-panel" id="rewardAndPunishment">
-                    <div class="check-div" data-toggle="modal" data-target="#rapModal">
+                    <div class="check-div">
                         <sapn class="col-sm-4">奖惩状况记录</sapn>
-                        <div class="plus-rap col-sm-4">
+                        <div class="plus-rap col-sm-4" data-toggle="modal" data-target="#rapModal">
                             <div class="plus">+</div>
                             <span style="color:rgb(0, 179, 89);">添加奖惩记录</span>
+                        </div>
+                        <div class="col-sm-4 select-rap">
+                            <form action="" class="form-inline select-rap-form">
+                                <div class="form-group">
+                                    <label>寝室号：</label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <button type="submit" class="btn btn-success">查询</button>
+                            </form>
                         </div>
                     </div>
                     <div class="rap-body">
@@ -330,13 +339,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                             </thead>
                             <tbody>
+                            <c:forEach var="reward" varStatus="i" items="${rewardsList}">
                                 <tr>
-                                    <td>1</td>
-                                    <td>学期文明寝室</td>
-                                    <td>227</td>
-                                    <td>2017-2018上</td>
+                                    <td><c:out value="${i.count}"></c:out></td>
+                                    <td><c:out value="${reward.context}"></c:out></td>
+                                    <td><c:out value="${reward.roomNo}"></c:out></td>
+                                    <td><c:out value="${reward.term}"></c:out></td>
                                 </tr>
-                                <tr>
+                            </c:forEach>
+                                <%--<tr>
                                     <td>2</td>
                                     <td>寝室有大功率电器</td>
                                     <td>303</td>
@@ -353,7 +364,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>党员寝室</td>
                                     <td>227</td>
                                     <td>2017-2018上</td>
-                                </tr>
+                                </tr>--%>
                             </tbody>
                         </table>
                     </div>
@@ -547,33 +558,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <h4 class="modal-title">添加奖惩记录</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" class="form-horizontal">
+                    <form action="/staff/addAwards" method="post" class="form-horizontal add-awards-form">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">奖惩状况：</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control">
+                                <input type="text" name="context" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">寝室号：</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control">
+                                <input type="text" name="roomNo" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">学期：</label>
                             <div class="col-sm-8">
-                                <select name="" class="form-control">
+                                <select name="term" class="form-control">
                                     <option>2017-2018上</option>
                                     <option>2017-2018下</option>
                                 </select>
                             </div>
+                            <input type="hidden" name="staffId" value="${staffDto.id}">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">保存</button>
+                    <button type="button" class="btn btn-primary add-awards-btn">保存</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -630,8 +642,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- /.modal -->
 </body>
 <script src="../js/jquery-3.2.1.js"></script>
-<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script src="../js/dorm-staff.js"></script>
+<script src="../js/jquery.cookie.js"></script>
+<script src="../js/dorm-admin.js"></script>
 
 </html>

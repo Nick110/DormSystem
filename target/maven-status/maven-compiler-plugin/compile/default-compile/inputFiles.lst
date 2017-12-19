@@ -1,7 +1,9 @@
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\LeaveregistDao.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\dao\RewardsDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\AdministratorDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\LeaveregistDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\BuildingDao.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Rewards.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\VisitrecordServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\StaffDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dto\StaffDto.java
@@ -15,6 +17,7 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\dao\NoticeDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Maintenance.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\HygienegradesDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\NoticeServiceImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\service\RewardsService.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\controller\MaintenanceController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\AdministratorServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Visitrecord.java
@@ -29,12 +32,14 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\LeaveregistServiceIm
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\HygienegradesService.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Leaveregist.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\NoticeService.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\RewardsDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dto\Json.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\VisitrecordDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\DormitoryServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\controller\StaffController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\MaintenanceDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\MaintenanceServiceImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\dto\RewardsDto.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Hygienegrades.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\StudentDao.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\LeaveregistService.java
@@ -72,4 +77,6 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\controller\NoticeController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Student.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\StudentServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\MajorDaoImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\controller\RewardsController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\NoticeDaoImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\RewardsServiceImpl.java
