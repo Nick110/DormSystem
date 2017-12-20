@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%
@@ -319,10 +320,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span style="color:rgb(0, 179, 89);">添加奖惩记录</span>
                         </div>
                         <div class="col-sm-4 select-rap">
-                            <form action="" class="form-inline select-rap-form">
+                            <form method="post" class="form-inline select-rap-form">
                                 <div class="form-group">
                                     <label>寝室号：</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" id="roomNo" class="form-control" maxlength="3" onkeyup="value=value.replace(/[^\d]/g,'')">
                                 </div>
                                 <button type="submit" class="btn btn-success">查询</button>
                             </form>
@@ -640,10 +641,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!-- /.modal-dialog -->
     </div>
     <!-- /.modal -->
+
+<p class="select-error" hidden="hidden"><c:out value="${error}"></c:out></p>
 </body>
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-<script src="../js/dorm-admin.js"></script>
+<script src="../js/dorm-staff.js"></script>
 
 </html>

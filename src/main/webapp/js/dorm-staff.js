@@ -77,4 +77,26 @@ $(document).ready(function(){
         $('.add-awards-form').submit();
     })
 
+    //查询奖惩表单action
+
+    $('.select-rap-form > button').click(function () {
+        var roomNo = $('#roomNo').val();
+        if (roomNo == "") {
+            alert("请输入寝室号！");
+        }
+        else {
+            window.location.href = "/selectRewards/" + roomNo;
+        }
+
+        return false;
+    })
+
+    //弹出没查找到
+    if ($('.select-error').text()) {
+        alert($('.select-error').text() + '\n5s后返回');
+        var t = setTimeout(function () {
+            window.location.href = "/staffHome";
+        }, 5000);
+    }
+
 })

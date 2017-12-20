@@ -56,7 +56,7 @@ public class RewardsServiceImpl implements RewardsService {
     @Override
     public void addRewards(RewardsDto rewardsDto) {
         Rewards rewards = new Rewards();
-        logger.info(String.valueOf(rewardsDto.getRoomNo()));
+//        logger.info(String.valueOf(rewardsDto.getRoomNo()));
         BeanUtils.copyProperties(rewardsDto, rewards);
         Staff staff = staffDao.get(Staff.class, rewardsDto.getStaffId());
         Dormitory dormitory = dormitoryDao.get("from Dormitory d where d.roomNo = " + rewardsDto.getRoomNo());
@@ -64,4 +64,31 @@ public class RewardsServiceImpl implements RewardsService {
         rewards.setDormId(dormitory);
         rewardsDao.save(rewards);
     }
+
+    @Override
+    public List<RewardsDto> selectRewards(int roomNo, String staffId) {
+        Dormitory dormitory = dormitoryDao.get("from Dormitory d where d.roomNo = " + roomNo);
+        if (dormitory == null) {
+            return null;
+        }
+        int dormId = dormitory.getId();
+        String hql = "from Rewards r where r.staffId = " + staffId + "and r.dormId = " + dormId;
+        List<Rewards> rewardsList = rewardsDao.find(hql);
+        List<RewardsDto> rewardsDtoList = new ArrayList<RewardsDto>();
+        if (rewardsList == null || rewardsList.size() == 0) {
+            return null;
+        }
+        for (Rewards rewards : rewardsList) {
+            RewardsDto rd = new RewardsDto();
+            BeanUtils.copyProperties(rewards, rd);
+            rd.setDormId(rewards.getDormId().getId());
+            rd.setStaffId(rewards.getStaffId().getId());
+            rd.setRoomNo(rewards.getDormId().getRoomNo());
+            logger.info(String.valueOf(rd.getDormId()));
+            rewardsDtoList.add(rd);
+        }
+        return rewardsDtoList;
+    }
+
+
 }
