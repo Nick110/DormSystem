@@ -308,3 +308,7 @@ form .form-group,.col-xs-offset-4 {
 .select-rap-form input {
     width: 100px !important;
 }
+
+.page {
+    text-align: center;
+}

@@ -10,7 +10,8 @@
  			<property name="thingsName"></property>
  			<property name="borrowTime"></property>
  			<property name="returnTime"></property>		
- 			<many-to-one name="stuId" unique="true"/> 
+ 			<many-to-one name="stuId" unique="true"/>
+			<many-to-one name="buildId"/>
  		</class>
  	</hibernate-mapping>
  	

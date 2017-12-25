@@ -2,7 +2,6 @@ package dorm.system.controller;
 
 import dorm.system.dto.RewardsDto;
 import dorm.system.dto.StaffDto;
-import dorm.system.entity.Staff;
 import dorm.system.service.RewardsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +18,8 @@ public class RewardsController {
     @Autowired
     private RewardsService rewardsService;
 
-    @PostMapping("/staff/addAwards")
-    public String addAwards(RewardsDto rewardsDto) {
+    @PostMapping("/staff/addRewards")
+    public String addRewards(RewardsDto rewardsDto) {
 //        StaffDto staffDto = (StaffDto) httpSession.getAttribute("staff");
         rewardsService.addRewards(rewardsDto);
         return "redirect:/staffHome";

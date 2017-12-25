@@ -1,16 +1,12 @@
 package dorm.system.controller;
 
-import dorm.system.dto.MaintenanceDto;
-import dorm.system.dto.NoticeDto;
-import dorm.system.dto.RewardsDto;
-import dorm.system.dto.StaffDto;
-import dorm.system.service.MaintenanceService;
-import dorm.system.service.NoticeService;
-import dorm.system.service.RewardsService;
+import dorm.system.dto.*;
+import dorm.system.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,6 +21,10 @@ public class StaffController {
     private MaintenanceService maintenanceService;
     @Autowired
     private RewardsService rewardsService;
+    @Autowired
+    private EquipmentService equipmentService;
+    @Autowired
+    private LeaveregistService leaveregistService;
 
     @Autowired
     HttpSession httpSession;
@@ -33,6 +33,9 @@ public class StaffController {
     public ModelAndView staffHome() {
         Logger logger = LoggerFactory.getLogger(StaffController.class);
         StaffDto staffDto = (StaffDto) httpSession.getAttribute("staff");
+        if (staffDto == null){
+            return new ModelAndView("redirect:/user/login");
+        }
         ModelAndView mav = new ModelAndView("dorm-admin");
 //        String staffDtoId = staffDto.getId();
 //        logger.info(staffDtoId);
@@ -52,13 +55,30 @@ public class StaffController {
 
         //显示奖惩表
         List<RewardsDto> rewardsDtoList = rewardsService.showRewards(staffDto);
-        System.out.println(rewardsDtoList.size());
+//        System.out.println(rewardsDtoList.size());
         mav.addObject("rewardsList", rewardsDtoList);
 
+        //显示借物记录
+        List<EquipmentDto> equipmentDtoList = equipmentService.showEquipments(staffDto.getId(), 1);
+        mav.addObject("equipments", equipmentDtoList);
+        int pageNumber = equipmentService.pageNumber(staffDto.getId());
+        mav.addObject("pageNumber", pageNumber);
 
-
-
+        //显示离校登记
+        List<LeaveregistDto> leaveregistDtoList = leaveregistService.showLeaveRegist(staffDto, 1);
+//        logger.info(String.valueOf(leaveregistDtoList.size()));
+        mav.addObject("leaveList", leaveregistDtoList);
+        int leavePageNumber = leaveregistService.pageNumber(staffDto.getId());
+        mav.addObject("leavePageNumber", leavePageNumber);
 
         return mav;
+    }
+
+    @GetMapping("/staff/logout")
+    public String logout(){
+        if (httpSession != null){
+            httpSession.invalidate();
+        }
+        return "redirect:/user/login";
     }
 }

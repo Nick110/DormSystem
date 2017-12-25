@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/dorm-staff.css">
+    <link rel="stylesheet" href="../css/dorm-admin.css">
     <title>宿舍管理</title>
 </head>
 
@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="person-info">
                 <p id="userName"><c:out value="${staffDto.realName}"></c:out></p>
                 <p>
-                    <a href="#">退出登录</a>
+                    <a href="/staff/logout" class="logout">退出登录</a>
                 </p>
             </div>
             <div class="menu-item" href="#announcements">
@@ -70,14 +70,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <span>发布公告</span>
                     </div>
                     <div class="announcements-body">
-                        <form action="/staffHome/doAddNotice" class="form-horizontal" method="post">
+                        <form action="#" class="form-horizontal" method="post">
                             <p>发布公告</p>
                             <hr>
                             <input type="hidden" name="staffId" value="${staffDto.id}">
-                            <textarea name="context" class="form-control" rows="7" placeholder="公告内容"></textarea>
+                            <textarea class="textarea" name="context" class="form-control add-notice-form" rows="7"
+                                      placeholder="公告内容"></textarea>
                             <div class="col-xs-offset-3 col-xs-5">
                                 <button type="reset" class="btn btn-xs btn-white" style="margin-left: 20px;">取 消</button>
-                                <button type="submit" class="btn btn-xs btn-green">保存</button>
+                                <button type="submit" class="btn btn-xs btn-green add-notice-btn">保存</button>
                             </div>
                         </form>
                     </div>
@@ -125,7 +126,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <c:forEach var="maintenanceHistory" items="${maintenanceDtoHistory}" varStatus="i">
                                 <tr>
                                     <td><c:out value="${i.count}"></c:out></td>
-                                    <td class="maintenance-id" hidden="hidden"name="${maintenanceHistory.id}"></td>
+                                    <td class="maintenance-id" hidden="hidden" name="${maintenanceHistory.id}"></td>
                                     <td><c:out value="${maintenanceHistory.stuId}"></c:out></td>
                                     <td><c:out value="${maintenanceHistory.dormName}"></c:out></td>
                                     <td><c:out value="${maintenanceHistory.description}"></c:out></td>
@@ -373,9 +374,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                 <!-- 物品借还登记 -->
                 <div class="tab-panel" id="borrow">
-                    <div class="check-div" data-toggle="modal" data-target="#borrowModal">
+                    <div class="check-div">
                         <sapn class="col-sm-4">物品借还登记</sapn>
-                        <div class="plus-rap col-sm-4">
+                        <div class="plus-rap col-sm-4" data-toggle="modal" data-target="#borrowModal">
                             <div class="plus">+</div>
                             <span style="color:rgb(0, 179, 89);">添加借物记录</span>
                         </div>
@@ -386,7 +387,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <tr>
                                     <th>#</th>
                                     <th>借物人学号</th>
-                                    <th>借物寝室号</th>
+                                    <th>寝室号</th>
                                     <th>物品</th>
                                     <th>借物时间</th>
                                     <th>归还情况/时间</th>
@@ -394,7 +395,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <c:forEach var="equipment" items="${equipments}">
+                                    <tr>
+                                        <td class="equipment-id"><c:out value="${equipment.id}"></c:out></td>
+                                        <td><c:out value="${equipment.stuId}"></c:out></td>
+                                        <td><c:out value="${equipment.roomNo}"></c:out></td>
+                                        <td><c:out value="${equipment.thingsName}"></c:out></td>
+                                        <td><c:out value="${equipment.borrowTime}"></c:out></td>
+                                        <td class="isReturned"><c:out value="${equipment.returnTime}"></c:out></td>
+                                        <td class="returned" style="cursor: pointer;color:#529373">他已归还</td>
+                                    </tr>
+                                </c:forEach>
+                                <%--<tr>
                                     <td>xxx</td>
                                     <td>xxx</td>
                                     <td>xxx</td>
@@ -438,9 +450,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>xxx</td>
                                     <td>xxx</td>
                                     <td style="cursor: pointer;color:#529373">他已归还</td>
-                                </tr>
+                                </tr>--%>
                             </tbody>
                         </table>
+                    </div>
+                    <%--分页--%>
+                    <div class="page borrow-page">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <c:forEach var="i" begin="1" end="${pageNumber}">
+                                    <li><a href="#"><c:out value="${i}"></c:out></a></li>
+                                </c:forEach>
+                               <%-- <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>--%>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
 
@@ -461,7 +487,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <c:forEach var="leave" items="${leaveList}" varStatus="i">
+                                    <tr>
+                                        <td><c:out value="${i.count}"></c:out></td>
+                                        <td><c:out value="${leave.stuId}"></c:out></td>
+                                        <td><c:out value="${leave.roomNo}"></c:out></td>
+                                        <td><c:out value="${leave.leavetime}"></c:out></td>
+                                        <td><c:out value="${leave.destination}"></c:out></td>
+                                        <td><c:out value="${leave.tel}"></c:out></td>
+                                        <td class="return-time"><c:out value="${leave.returntime}"></c:out></td>
+                                    </tr>
+                                </c:forEach>
+                                <%--<tr>
                                     <td>xxx</td>
                                     <td>xxx</td>
                                     <td>xxx</td>
@@ -505,9 +542,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <td>义乌市</td>
                                     <td>10086</td>
                                     <td>2018-3-29</td>
-                                </tr>
+                                </tr>--%>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="page leave-page">
+                        <nav aria-label="Page navigation">
+                            <ul class="pagination">
+                                <c:forEach var="i" begin="1" end="${leavePageNumber}">
+                                    <li><a href="#"><c:out value="${i}"></c:out></a></li>
+                                </c:forEach>
+                                <%-- <li><a href="#">2</a></li>
+                                 <li><a href="#">3</a></li>
+                                 <li><a href="#">4</a></li>
+                                 <li><a href="#">5</a></li>--%>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
 
@@ -517,17 +567,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         原始密码为666666
                     </div>
                     <div class="psw-body">
-                        <form action="" class="form-horizontal" style="height: 200px">
+                        <form action="/staff/updatePassword" method="post" class="update-psw-form form-horizontal"
+                              style="height: 200px">
                             <div class="form-group">
                                 <label class="control-label col-xs-4">原密码：</label>
                                 <div class="col-xs-5">
-                                    <input type="password" class="form-control input-sm">
+                                    <input name="previousPassword" type="password" class="form-control input-sm">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-xs-4">新密码：</label>
                                 <div class="col-xs-5">
-                                    <input type="password" class="form-control input-sm">
+                                    <input name="newPassword" type="password" class="form-control input-sm"
+                                           onkeyup="value=value.replace(/[^\d]/g,'')">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -538,7 +590,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </div>
                             <div class="col-xs-offset-4 col-xs-5">
                                 <button type="reset" class="btn btn-xs btn-white">取 消</button>
-                                <button type="submit" class="btn btn-xs btn-green">保存</button>
+                                <button type="button" class="update-psd-btn btn btn-xs btn-green">保存</button>
                             </div>
                         </form>
                     </div>
@@ -559,7 +611,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <h4 class="modal-title">添加奖惩记录</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="/staff/addAwards" method="post" class="form-horizontal add-awards-form">
+                    <form action="/staff/addRewards" method="post" class="form-horizontal add-awards-form">
                         <div class="form-group">
                             <label class="col-sm-3 control-label">奖惩状况：</label>
                             <div class="col-sm-8">
@@ -604,36 +656,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <h4 class="modal-title">添加借物记录</h4>
                 </div>
                 <div class="modal-body">
-                    <form action="" class="form-horizontal">
+                    <form action="/staff/borrow" method="post" class="form-horizontal borrow-form">
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">借物人：</label>
+                            <label class="col-sm-3 control-label">借物人学号：</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control">
+                                <input type="text" name="stuId" class="form-control">
                             </div>
                         </div>
-                        <div class="form-group">
+                        <%--<div class="form-group">
                             <label class="col-sm-3 control-label">寝室号：</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control">
+                                <input type="text" name="roomNo" class="form-control">
                             </div>
-                        </div>
+                        </div>--%>
                         <div class="form-group">
                             <label class="col-sm-3 control-label">物品名称：</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control">
+                                <input type="text" name="thingsName" class="form-control">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-3 control-label">借物日期：</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
+                        <%--<input type="hidden" name="staffId" value="${staffDto.id}">--%>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">保存</button>
+                    <button type="button" class="btn btn-primary borrow-btn">保存</button>
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -643,10 +690,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- /.modal -->
 
 <p class="select-error" hidden="hidden"><c:out value="${error}"></c:out></p>
+<p class="borrow-msg" hidden="hidden"><c:out value="${message}"></c:out></p>
+<p class="update-psw-result" hidden="hidden"><c:out value="${requestScope.updatePasswordResult}"></c:out></p>
+    <input type="hidden" id="refreshed" value="no">
 </body>
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
 <script src="../js/dorm-staff.js"></script>
-
 </html>

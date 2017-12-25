@@ -15,6 +15,6 @@
  			<set name="visitrecord" cascade="all">
  				<key column="buildId"></key>
  				<one-to-many class="Visitrecord"/>
- 			</set>	  
+ 			</set>
  		</class>
  	</hibernate-mapping> 	
