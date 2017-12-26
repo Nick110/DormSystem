@@ -259,6 +259,25 @@ $(document).ready(function(){
         e.val('no');
         location.reload();
     }
-    
+
+    //select自动提交
+    $('.choose-flr').change(function () {
+        $(this).parent('form').submit();
+    })
+
+    if ($('.choose-flr-error').text()){
+        alert($('.choose-flr-error').text()+'\n5s后返回');
+        var t =setTimeout(function () {
+            window.location.href = "/staffHome";
+        }, 5000)
+    }
+
+    if ($('.current-flr').text()){
+        $('.choose-flr').val($('.current-flr').text());
+    }
+
+
+    //将卫生检查分数封装成数组
+    var hygiene = new Array();
 })
 

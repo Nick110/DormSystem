@@ -257,7 +257,8 @@ form .form-group,.col-xs-offset-4 {
 
 .hygiene-body {
     font-size: 14px;
-    width: 700px;
+    width: 900px;
+    min-height: 900px;
     margin: 30px auto;
     padding: 30px 50px 20px;
     color: #000000;
@@ -311,4 +312,8 @@ form .form-group,.col-xs-offset-4 {
 
 .page {
     text-align: center;
+}
+
+#hygiene-div {
+    display: block;
 }

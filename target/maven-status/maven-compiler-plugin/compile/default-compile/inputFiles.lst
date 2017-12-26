@@ -40,6 +40,7 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\VisitrecordDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\DormitoryServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\controller\StaffController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\MaintenanceDaoImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\dto\HygieneDormDto.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\MaintenanceServiceImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dto\RewardsDto.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\entity\Hygienegrades.java
@@ -55,7 +56,9 @@ E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\HygienegradesDaoImpl.jav
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\StaffService.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\impl\BuildingDaoImpl.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\impl\StaffServiceImpl.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\controller\HygieneController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\dao\EquipmentDao.java
+E:\GitHub\DormSystem\src\main\java\dorm\system\dto\HygieneDto.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\controller\AdminController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\controller\EquipmentController.java
 E:\GitHub\DormSystem\src\main\java\dorm\system\service\EquipmentService.java

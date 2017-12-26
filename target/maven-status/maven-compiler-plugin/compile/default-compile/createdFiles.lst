@@ -13,6 +13,7 @@ dorm\system\dao\impl\RewardsDaoImpl.class
 dorm\system\dto\RewardsDto.class
 dorm\system\entity\Notice.class
 dorm\system\dao\HygienegradesDao.class
+dorm\system\dto\HygieneDormDto.class
 dorm\system\dto\NoticeDto.class
 dorm\system\dao\AdministratorDao.class
 dorm\system\dao\StudentDao.class
@@ -21,6 +22,7 @@ dorm\system\dao\impl\EquipmentDaoImpl.class
 dorm\system\dao\StaffDao.class
 dorm\system\dto\Json.class
 dorm\system\entity\Leaveregist.class
+dorm\system\dto\HygieneDto.class
 dorm\system\service\MaintenanceService.class
 dorm\system\dao\BuildingDao.class
 dorm\system\dto\MaintenanceDto.class
@@ -33,6 +35,7 @@ dorm\system\entity\Dormitory.class
 dorm\system\dto\LeaveregistDto.class
 dorm\system\entity\Equipment.class
 dorm\system\service\RewardsService.class
+dorm\system\controller\HygieneController.class
 dorm\system\dao\impl\StudentDaoImpl.class
 dorm\system\service\impl\NoticeServiceImpl.class
 dorm\system\dto\StudentDto.class

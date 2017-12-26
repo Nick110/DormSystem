@@ -13,7 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/dorm-admin.css">
+    <link rel="stylesheet" href="../css/dorm-staff.css">
     <title>宿舍管理</title>
 </head>
 
@@ -180,134 +180,42 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- 卫生检查记录模块 -->
                 <div class="tab-panel" id="hygiene">
                     <div class="check-div">
-                        <form action="" class="form-inline">
+                        <form action="/staff/chooseFloor" class="form-inline">
                             <span>记录卫生检查结果</span>
                             <label>请选择楼层：</label>
-                            <select class="form-control">
+                            <select name="floor" class="form-control choose-flr">
+                                <option></option>
+                                <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                                 <option>5</option>
-                                <option>6</option>
                             </select>
                         </form>
                     </div>
                     <div class="hygiene-body">
                         <form class="form-inline">
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
+                            <c:forEach var="dorm" items="${dormList}" varStatus="i">
+                                <c:if test="${i.count mod 10 eq 1}">
+                                    <div class="col-sm-4" id="dorm-no">
+                                </c:if>
+
+                                <div class="form-group col-sm-7">
+                                    <c:set var="no" value="寝室："></c:set>
+                                    <c:set var="roomNo" value="${dorm.roomNo}${no}"></c:set>
+                                    <label><c:out value="${roomNo}"></c:out></label>
+                                    <input type="text" class="form-control" placeholder="卫生检查分数">
+                                </div>
+
+                                <c:if test="${i.count mod 10 eq 0 || i.last}">
+                                    </div>
+                                </c:if>
+
+                            </c:forEach>
+                            <div id="hygiene-div">
+                                <button type="button" class="btn btn-default">保存</button>
                             </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-sm-7">
-                                <label>卫生检查分数：</label>
-                                <input type="text" class="form-control">
-                            </div>
-                            <div class="form-group col-sm-5">
-                                <label>寝室号：</label>
-                                <select class="form-control">
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                    <option>204</option>
-                                    <option>205</option>
-                                </select>
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-default">保存</button>
+
                         </form>
                     </div>
                 </div>
@@ -691,11 +599,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <p class="select-error" hidden="hidden"><c:out value="${error}"></c:out></p>
 <p class="borrow-msg" hidden="hidden"><c:out value="${message}"></c:out></p>
+<p class="choose-flr-error" hidden="hidden"><c:out value="${chooseFlrNull}"></c:out></p>
+<p class="current-flr" hidden="hidden"><c:out value="${floor}"></c:out></p>
 <p class="update-psw-result" hidden="hidden"><c:out value="${requestScope.updatePasswordResult}"></c:out></p>
     <input type="hidden" id="refreshed" value="no">
 </body>
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-<script src="../js/dorm-staff.js"></script>
+<script src="../js/dorm-admin.js"></script>
 </html>

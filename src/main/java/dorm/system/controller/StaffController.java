@@ -25,6 +25,8 @@ public class StaffController {
     private EquipmentService equipmentService;
     @Autowired
     private LeaveregistService leaveregistService;
+    @Autowired
+    private HygienegradesService hygienegradesService;
 
     @Autowired
     HttpSession httpSession;
@@ -70,6 +72,11 @@ public class StaffController {
         mav.addObject("leaveList", leaveregistDtoList);
         int leavePageNumber = leaveregistService.pageNumber(staffDto.getId());
         mav.addObject("leavePageNumber", leavePageNumber);
+
+        //显示楼层对应的寝室
+        List<HygieneDormDto> hygieneDormDtoList = hygienegradesService.showDorm(staffDto, 1);
+        logger.info(hygieneDormDtoList.get(0).getRoomNo());
+        mav.addObject("dormList", hygieneDormDtoList);
 
         return mav;
     }
