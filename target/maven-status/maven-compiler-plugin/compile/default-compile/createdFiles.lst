@@ -5,11 +5,13 @@ dorm\system\service\impl\LeaveregistServiceImpl.class
 dorm\system\entity\Visitrecord.class
 dorm\system\service\StudentService.class
 dorm\system\service\impl\HygienegradesServiceImpl.class
+dorm\system\controller\ExportExcelController.class
 dorm\system\dao\impl\BaseDaoImpl.class
 dorm\system\service\AdministratorService.class
 dorm\system\dto\StaffDto.class
 dorm\system\dao\NoticeDao.class
 dorm\system\dao\impl\RewardsDaoImpl.class
+dorm\system\util\ExcelUtil.class
 dorm\system\dto\RewardsDto.class
 dorm\system\entity\Notice.class
 dorm\system\dao\HygienegradesDao.class

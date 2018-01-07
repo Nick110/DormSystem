@@ -277,7 +277,57 @@ $(document).ready(function(){
     }
 
 
-    //将卫生检查分数封装成数组
-    var hygiene = new Array();
+    //将卫生检查分数封装成数组提交后台
+    $('.hygiene-btn').click(function () {
+        var hygieneArray = new Array();
+        var hygieneScore = $('.hygiene-score');
+        // var hygieneLength = $('.hygiene-score').length;
+        hygieneScore.each(function () {
+            var demo = {
+                roomNo: $(this).find('label').text(),
+                remarks: $(this).find('input').val()
+            };
+            if (!isNaN(demo.remarks) || demo.remarks < 0 || demo.remarks > 100){
+                alert("请输入0-100的正整数！");
+                return false;
+            }
+
+            if (demo.remarks != "") {
+                hygieneArray.push(demo);
+            }
+
+
+        })
+        if (hygieneArray.length == 0){
+            alert("未输入有效成绩！");
+            return false;
+        }
+        // console.log(hygieneArray[0].roomNo);
+        console.log(hygieneArray.length);
+        $.ajax({
+            url: "/staff/hygieneRemarks",
+            type: 'POST',
+            contentType: "application/json;charset=UTF-8",
+            // dataType : 'json',
+            data: JSON.stringify(hygieneArray),  //stringify()用于从一个对象解析出字符串
+            success: function (data) {
+                // console.log(data);
+                alert('分数登记成功！');
+                window.location.reload();
+            },
+            error: function () {
+                alert("登记失败！");
+            }
+        })
+    })
+
+    //获取北京时间的月份
+    var nowDate = new Date();
+    var nowMonth = nowDate.getFullYear() + "年" + (nowDate.getMonth() + 1)
+        + "月" + nowDate.getDate() + "日";
+    // console.log(nowMonth);
+    $('.now-time').text("现在是：" + nowMonth);
+
+
 })
 

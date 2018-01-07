@@ -8,6 +8,16 @@ public class Hygienegrades {
 	private int grade;
 	private String remarks;
 	private Dormitory dormId;
+	private Building buildId;
+
+	public Building getBuildId() {
+		return buildId;
+	}
+
+	public void setBuildId(Building buildId) {
+		this.buildId = buildId;
+	}
+
 	public int getId() {
 		return id;
 	}

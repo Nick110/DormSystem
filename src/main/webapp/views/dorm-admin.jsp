@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="person-info">
                 <p id="userName"><c:out value="${staffDto.realName}"></c:out></p>
                 <p>
-                    <a href="/staff/logout" class="logout">退出登录</a>
+                    <a href="javascript：void(0)" class="logout">退出登录</a>
                 </p>
             </div>
             <div class="menu-item" href="#announcements">
@@ -184,14 +184,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span>记录卫生检查结果</span>
                             <label>请选择楼层：</label>
                             <select name="floor" class="form-control choose-flr">
-                                <option></option>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
                                 <option>5</option>
                             </select>
+                            <span class="now-time">现在是</span>
+                            <a href="/staff/seeHygiene" class="see-hygiene" style="cursor: pointer">查看本月寝室卫生成绩单</a>
                         </form>
+
                     </div>
                     <div class="hygiene-body">
                         <form class="form-inline">
@@ -200,10 +202,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <div class="col-sm-4" id="dorm-no">
                                 </c:if>
 
-                                <div class="form-group col-sm-7">
-                                    <c:set var="no" value="寝室："></c:set>
-                                    <c:set var="roomNo" value="${dorm.roomNo}${no}"></c:set>
-                                    <label><c:out value="${roomNo}"></c:out></label>
+                                <div class="form-group col-sm-7 hygiene-score">
+                                    <%--<c:set var="no" value="寝室："></c:set>--%>
+                                    <%--<c:set var="roomNo" value="${dorm.roomNo}${no}"></c:set>--%>
+                                    <label><c:out value="${dorm.roomNo}"></c:out></label>
                                     <input type="text" class="form-control" placeholder="卫生检查分数">
                                 </div>
 
@@ -212,11 +214,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </c:if>
 
                             </c:forEach>
-                            <div id="hygiene-div">
-                                <button type="button" class="btn btn-default">保存</button>
-                            </div>
-
                         </form>
+
+                    </div>
+                    <div id="hygiene-div">
+                        <button type="button" class="btn btn-success hygiene-btn">保存</button>
                     </div>
                 </div>
 

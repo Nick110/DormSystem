@@ -1,17 +1,42 @@
 package dorm.system.dto;
 
-import dorm.system.entity.Hygienegrades;
-
-import java.util.List;
-
 public class HygieneDto {
-    List<Hygienegrades> hygienegradesList;
+    private String roomNo;
+    private String remarks;
+    private String yearAndMonth;
+    private String staffId;
 
-    public List<Hygienegrades> getHygienegradesList() {
-        return hygienegradesList;
+    public String getYearAndMonth() {
+        return yearAndMonth;
     }
 
-    public void setHygienegradesList(List<Hygienegrades> hygienegradesList) {
-        this.hygienegradesList = hygienegradesList;
+    public void setYearAndMonth(String yearAndMonth) {
+        this.yearAndMonth = yearAndMonth;
+    }
+
+    public String getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(String staffId) {
+        this.staffId = staffId;
+    }
+
+    public String getRoomNo() {
+        return roomNo;
+    }
+
+
+
+    public void setRoomNo(String roomNo) {
+        this.roomNo = roomNo;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

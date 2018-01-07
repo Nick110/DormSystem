@@ -145,6 +145,7 @@ img {
     padding-left: 30px;
     min-width: 824px !important;
     box-sizing: border-box;
+    position: relative;
 }
 
 .check-div form label {
@@ -258,7 +259,7 @@ form .form-group,.col-xs-offset-4 {
 .hygiene-body {
     font-size: 14px;
     width: 900px;
-    min-height: 900px;
+    min-height: 950px;
     margin: 30px auto;
     padding: 30px 50px 20px;
     color: #000000;
@@ -316,4 +317,16 @@ form .form-group,.col-xs-offset-4 {
 
 #hygiene-div {
     display: block;
+    height:50px;
+    margin-top: 30px;
+    text-align: center;
 }
+
+.now-time,.see-hygiene {
+    display: inline-block;
+    margin-left: 100px;
+}
+
+/*.hygiene-btn {
+    margin-bottom: 40px;
+}*/

@@ -11,6 +11,7 @@
  			<property name="grade"></property>
  			<property name="remarks"></property>			
  			<many-to-one name="dormId"/> 
+ 			<many-to-one name="buildId"/>
  		</class>
  	</hibernate-mapping>
  	
