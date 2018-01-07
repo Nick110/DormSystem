@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="person-info">
                 <p id="userName"><c:out value="${staffDto.realName}"></c:out></p>
                 <p>
-                    <a href="javascript：void(0)" class="logout">退出登录</a>
+                    <a href="#" class="logout">退出登录</a>
                 </p>
             </div>
             <div class="menu-item" href="#announcements">
@@ -70,7 +70,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <span>发布公告</span>
                     </div>
                     <div class="announcements-body">
-                        <form action="#" class="form-horizontal" method="post">
+                        <form action="/staffHome/doAddNotice" class="form-horizontal" method="post">
                             <p>发布公告</p>
                             <hr>
                             <input type="hidden" name="staffId" value="${staffDto.id}">
@@ -609,5 +609,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-<script src="../js/dorm-admin.js"></script>
+<script src="../js/dorm-staff.js"></script>
 </html>

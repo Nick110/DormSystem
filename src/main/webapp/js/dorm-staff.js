@@ -287,13 +287,15 @@ $(document).ready(function(){
                 roomNo: $(this).find('label').text(),
                 remarks: $(this).find('input').val()
             };
-            if (!isNaN(demo.remarks) || demo.remarks < 0 || demo.remarks > 100){
-                alert("请输入0-100的正整数！");
-                return false;
-            }
 
             if (demo.remarks != "") {
-                hygieneArray.push(demo);
+                if (isNaN(demo.remarks) || demo.remarks < 0 || demo.remarks > 100){
+                    // console.log(!isNaN(demo.remarks));
+                    alert("请输入0-100的正整数！");
+                    return false;
+                }
+                else {hygieneArray.push(demo);}
+
             }
 
 
