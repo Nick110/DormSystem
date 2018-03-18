@@ -538,7 +538,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <label class="col-sm-3 control-label">学期：</label>
                             <div class="col-sm-8">
                                 <select name="term" class="form-control">
-                                    <option>2017-2018上</option>
+                                    <option>2016-2017上</option>
+                                    <option>2016-2017下</option>
+                                    <option>2017-2018下</option>
                                     <option>2017-2018下</option>
                                 </select>
                             </div>
@@ -609,5 +611,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/jquery.cookie.js"></script>
-<script src="../js/dorm-staff.js"></script>
+<script src="../js/dorm-admin.js"></script>
 </html>

@@ -1,13 +1,10 @@
 package dorm.system.service.impl;
 
-import dorm.system.dao.BuildingDao;
 import dorm.system.dao.DormitoryDao;
 import dorm.system.dao.MaintenanceDao;
 import dorm.system.dto.MaintenanceDto;
 import dorm.system.dto.StaffDto;
-import dorm.system.entity.Dormitory;
 import dorm.system.entity.Maintenance;
-import dorm.system.entity.Staff;
 import dorm.system.service.MaintenanceService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,8 +12,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,10 +43,10 @@ public class MaintenanceServiceImpl implements MaintenanceService {
             MaintenanceDto md = new MaintenanceDto();
             BeanUtils.copyProperties(maintenance, md);
 //            logger.info(String.valueOf(md.getDormId()));
-           md.setDormName(maintenance.getDormId().getRoomNo());
-           md.setStaffId(maintenance.getStaffId().getId());
-           md.setStuId(maintenance.getStuId().getId());
-           maintenanceDtoList.add(md);
+            md.setDormName(maintenance.getDormId().getRoomNo());
+            md.setStaffId(maintenance.getStaffId().getId());
+            md.setStuId(maintenance.getStuId().getId());
+            maintenanceDtoList.add(md);
         }
         return maintenanceDtoList;
     }

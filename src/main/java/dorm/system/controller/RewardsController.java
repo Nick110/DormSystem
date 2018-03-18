@@ -8,10 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class RewardsController {
@@ -19,10 +22,13 @@ public class RewardsController {
     private RewardsService rewardsService;
 
     @PostMapping("/staff/addRewards")
-    public String addRewards(RewardsDto rewardsDto) {
+    @ResponseBody
+    public Map<String,Object> addRewards(RewardsDto rewardsDto) {
 //        StaffDto staffDto = (StaffDto) httpSession.getAttribute("staff");
-        rewardsService.addRewards(rewardsDto);
-        return "redirect:/staffHome";
+        Map<String,Object> resultMap = new HashMap<String, Object>();
+        String addRewardsResult = rewardsService.addRewards(rewardsDto);
+        resultMap.put("addRewardsResult", addRewardsResult);
+        return resultMap;
     }
 
     @GetMapping("/selectRewards/{roomNo}")

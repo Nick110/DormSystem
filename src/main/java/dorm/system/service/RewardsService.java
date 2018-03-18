@@ -13,7 +13,7 @@ import java.util.List;
 @Transactional
 public interface RewardsService {
     public List<RewardsDto> showRewards (StaffDto staffDto);
-    public void addRewards (RewardsDto rewardsDto);
+    public String addRewards (RewardsDto rewardsDto);
     public List<RewardsDto> selectRewards (int dormId, String staffId);
 
 }

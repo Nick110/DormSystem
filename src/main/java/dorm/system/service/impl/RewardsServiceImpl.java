@@ -54,15 +54,19 @@ public class RewardsServiceImpl implements RewardsService {
     }
 
     @Override
-    public void addRewards(RewardsDto rewardsDto) {
+    public String addRewards(RewardsDto rewardsDto) {
         Rewards rewards = new Rewards();
 //        logger.info(String.valueOf(rewardsDto.getRoomNo()));
         BeanUtils.copyProperties(rewardsDto, rewards);
         Staff staff = staffDao.get(Staff.class, rewardsDto.getStaffId());
         Dormitory dormitory = dormitoryDao.get("from Dormitory d where d.roomNo = " + rewardsDto.getRoomNo());
+        if (dormitory == null) {
+            return "该寝室不存在！";
+        }
         rewards.setStaffId(staff);
         rewards.setDormId(dormitory);
         rewardsDao.save(rewards);
+        return "添加成功！";
     }
 
     @Override

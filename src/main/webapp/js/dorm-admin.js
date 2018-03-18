@@ -104,7 +104,20 @@ $(document).ready(function(){
                 return false;
             }
         }
-        $('.add-awards-form').submit();
+        // $('.add-awards-form').submit();
+        $.ajax({
+            url: "/staff/addRewards",
+            type: "POST",
+            data: $('.add-awards-form').serialize(),
+            dataType: "json",
+            success: function (result) {
+                alert(result.addRewardsResult);  //result是一个Object类型
+            },
+            error: function (result) {
+                // console.log(result);
+                alert("请求错误！");
+            }
+        });
     })
 
     //查询奖惩表单action
