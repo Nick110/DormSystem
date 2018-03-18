@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,12 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 			}
 		}
 		return q.list();
+	}
+
+	@Override
+	public int executeSql(String sql) {
+		SQLQuery q = this.getCurrentSession().createSQLQuery(sql);
+		return q.executeUpdate();
 	}
 
 	public List<T> find(String hql, int page, int rows) {

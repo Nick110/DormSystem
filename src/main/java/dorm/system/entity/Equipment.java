@@ -1,6 +1,7 @@
 package dorm.system.entity;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Equipment {
 	private int id;
@@ -8,6 +9,16 @@ public class Equipment {
 	private Timestamp borrowTime;
 	private Timestamp returnTime;
 	private Student stuId;
+	private Building buildId;
+
+	public Building getBuildId() {
+		return buildId;
+	}
+
+	public void setBuildId(Building buildId) {
+		this.buildId = buildId;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -38,6 +49,4 @@ public class Equipment {
 	public void setStuId(Student stuId) {
 		this.stuId = stuId;
 	}
-
-
 }

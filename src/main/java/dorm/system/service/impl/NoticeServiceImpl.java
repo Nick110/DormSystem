@@ -15,10 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.sql.Timestamp;
+import java.util.*;
 
 @Service
 @Transactional
@@ -34,9 +32,13 @@ public class NoticeServiceImpl implements NoticeService {
     //添加公告
     @Override
     public void addNotice(NoticeDto noticeDto) {
+        Date date = new Date();
         Notice notice = new Notice();
+        Staff staff = staffDao.get(Staff.class, noticeDto.getStaffId());
         //将noticeDto的值赋给notice
         BeanUtils.copyProperties(noticeDto, notice);
+        notice.setStaffId(staff);
+        notice.setTime(new Timestamp(date.getTime()));
         noticeDao.save(notice);
     }
 

@@ -12,7 +12,7 @@
  	 	    <many-to-one name="dormId" unique="true"/> 
  			<many-to-one name="majorId" unique="true"/>
  			<set name="leaveregist" cascade="all">
- 				<key column="stu"></key>
+ 				<key column="stuId"></key>
  				<one-to-many class="Leaveregist"/>
  			</set>	
  			<set name="equipment" cascade="all">

@@ -12,6 +12,16 @@ public class Leaveregist {
 	private String tel;
 	private Student stuId;
 	private int state;
+	private Building buildId;
+
+	public Building getBuildId() {
+		return buildId;
+	}
+
+	public void setBuildId(Building buildId) {
+		this.buildId = buildId;
+	}
+
 	public int getId() {
 		return id;
 	}

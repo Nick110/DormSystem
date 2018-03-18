@@ -12,7 +12,8 @@
  			<property name="returntime"></property>
  			<property name="tel"></property>
  			<property name="state"></property>			
- 			<many-to-one name="stuId" unique="true"/> 
+ 			<many-to-one name="stuId" unique="true"/>
+ 			<many-to-one name="buildId"/>
  		</class>
  	</hibernate-mapping>
  	

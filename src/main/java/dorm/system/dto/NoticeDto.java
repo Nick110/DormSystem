@@ -8,7 +8,7 @@ public class NoticeDto {
     private int id;
     private String context;
     private Timestamp time;
-    private Staff staffId;
+    private String staffId;
 
     public int getId() {
         return id;
@@ -34,11 +34,11 @@ public class NoticeDto {
         this.time = time;
     }
 
-    public Staff getStaffId() {
+    public String getStaffId() {
         return staffId;
     }
 
-    public void setStaffId(Staff staffId) {
+    public void setStaffId(String staffId) {
         this.staffId = staffId;
     }
 }

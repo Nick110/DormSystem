@@ -12,3 +12,4 @@ public interface NoticeService {
     public List<NoticeDto> showNotice(StaffDto staffDto);
     public StaffDto selectStaff(String id);
 }
+

@@ -35,6 +35,8 @@ public interface BaseDao<T> {
 
 	//获得对象列表
 	public List<T> find(String hql, Map<String, Object> params);
+
+	public int executeSql(String sql);
 	
 	/**
 	 * 获得分页后的对象列表
